@@ -31,3 +31,5 @@ yarn-error.log*
 
 # editor files
 .vscode
+
+dbdata
