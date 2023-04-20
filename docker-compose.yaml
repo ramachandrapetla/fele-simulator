@@ -1,6 +1,16 @@
 version: '3'
 services:
+  fele-simulator:
+    container_name: fele-simulator
+    image: fele-simulator:1.0
+    restart: always
+    build: .
+    ports:
+      - "8005:8005"
+    links:
+      - fele-couchdb
   fele-couchdb:
+    container_name: flee-couchdb
     image: couchdb
     restart: always
     ports:
