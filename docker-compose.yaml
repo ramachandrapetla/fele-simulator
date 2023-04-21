@@ -2,7 +2,7 @@ version: '3'
 services:
   fele-simulator:
     container_name: fele-simulator
-    image: fele-simulator:1.0
+    image: fele-simulator
     restart: always
     build: .
     ports:
@@ -10,13 +10,13 @@ services:
     links:
       - fele-couchdb
   fele-couchdb:
-    container_name: flee-couchdb
+    container_name: fele-couchdb
     image: couchdb
     restart: always
     ports:
       - "5984:5984"
     environment:
       - COUCHDB_USER=admin
-      - COUCHDB_PASSWORD=icui4cu
+      - COUCHDB_PASSWORD=password
     volumes:
       - ./dbdata:/opt/couchdb/data

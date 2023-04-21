@@ -3,6 +3,7 @@ const { couchdb } = require('../../conf/feleConf')
 const logger = require('./logger')
 
 const couch = new NodeCouchDb({
+    host: 'fele-couchdb',
     auth: {
         user: couchdb.username,
         pass: couchdb.password
