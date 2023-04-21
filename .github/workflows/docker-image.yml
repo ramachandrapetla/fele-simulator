@@ -26,7 +26,7 @@ jobs:
       with:
         images: fele-simulator
         tags: |
-          type=raw,value=latest,enable=${{ endsWith(GitHub.ref, ‘master’) }}
+          type=raw,value=latest,enable=${{ endsWith(GitHub.ref, 'master') }}
           type=ref,event=tag
         flavor: |
           latest=false
