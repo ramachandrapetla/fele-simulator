@@ -1,0 +1,11 @@
+{
+  "name": "local-organization-api",
+  "version": "1.0.0",
+  "description": "Local organization api, provides support for fele-simulator to mimic organizations and support different services",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ramachandra Petla",
+  "license": "ISC"
+}
