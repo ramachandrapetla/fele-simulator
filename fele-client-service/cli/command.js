@@ -34,8 +34,8 @@ caCommand
     .description('Registers a Fele User')
     .option('-id, --id <id>', 'id for the fele user')
     .option('-a, --affiliation <affiliation>', 'id for the fele user') //orgName eg: nasa_artemis
-    .action((options) => {
-        let { enrollmentID, enrollmentSecret } = registerUserCLI(options);
+    .action(async(options) => {
+        let { enrollmentID, enrollmentSecret } = await registerUserCLI(options.affiliation, options.id);
         
         interpreter.enrollmentID = enrollmentID;
         interpreter.enrollmentSecret = enrollmentSecret;
@@ -64,7 +64,7 @@ caCommand
     .action(async(options) => {
         //Prepare a csr to send & generate a certificate for the fele user 
         if(interpreter.enrollmentID == options.enrollmentId && interpreter.enrollmentSecret == options.enrollmentSecret) {
-            const wallet_id = await enrollUserCLI(options);
+            const wallet_id = await enrollUserCLI(options.enrollmentId, options.mspId, options.network);
             console.log("CREDENTIAL ID: ", wallet_id);
             if (wallet_id) console.log(wallet_id)
             else console.log("User cannot be enrolled")
@@ -192,7 +192,8 @@ chaincodeCommand
         var json = options.chaincodeArgument;
         console.log("Chaincode Argument", json);
         json = JSON.parse(json);
-        return invokeChaincodeCLI(options.networkName, options.channelName, options.chaincodeName, json); 
+        let invokerName = GLOBAL_STATE.feleUser.user
+        return invokeChaincodeCLI(options.networkName, options.channelName, invokerName, options.chaincodeName, json); 
     });
     
 
