@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const {registerFeleUser, enrollFeleUser, getAllUserCredentialsForUser} = require('../handlers/fele-ca.handler')
+const {registerFeleUser, enrollFeleUser, getAllUserCredentialsForUser} = require('../controllers/ca.controller')
 //CA Routes
-router.post('/user/register', registerFeleUser)
-router.post('/user/enroll', enrollFeleUser) //Creates a certificate for fele-user
-router.get('/user/get-credentials', getAllUserCredentialsForUser)
+router.post('/register', registerFeleUser)
+router.post('/enroll', enrollFeleUser) //Creates a certificate for fele-user
+router.get('/get-credentials', getAllUserCredentialsForUser)
 module.exports = router
