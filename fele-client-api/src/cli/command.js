@@ -421,9 +421,4 @@ localOrgsCommand
         return await deleteMappingCLI(options.adminUsername, options.adminPassword, json);
     })
 
-
-
-module.exports = {
-  program,
-  interpreter
-}
+program.parse(process.argv)
